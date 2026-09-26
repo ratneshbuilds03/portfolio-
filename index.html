@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ratnesh Makwana — Python Backend Developer specializing in FastAPI, Flask, AWS, Docker and microservices.">
+    <title>Ratnesh Makwana | Backend Developer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="code-tag">&lt;</span>
+                <span class="logo-text">Ratnesh</span>
+                <span class="code-tag">/&gt;</span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <a href="assets/resume.pdf" 
+                       class="btn-resume" 
+                       target="_blank">
+                        Resume
+                    </a>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <p class="hero-greeting">Hi, I'm</p>
+            <h1 class="hero-name">Ratnesh Makwana</h1>
+            <h2 class="hero-title">
+                <span class="typing-text" id="typing"></span>
+                <span class="cursor">|</span>
+            </h2>
+            <p class="hero-desc">
+                I build <span class="highlight">production-grade backend systems</span> — 
+                REST APIs, microservices, and scalable architectures with Python, 
+                FastAPI, Flask, AWS, Docker, and more.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary">View Projects</a>
+                <a href="assets/resume.pdf" 
+                   class="btn-secondary" 
+                   target="_blank">
+                    Download Resume
+                </a>
+            </div>
+            <div class="hero-socials">
+                <a href="https://github.com/yourusername" target="_blank" class="social-link">
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-link">
+                    LinkedIn
+                </a>
+                <a href="mailto:your@email.com" class="social-link">
+                    Email
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-num">01.</span> About Me
+            </h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a <span class="highlight">Python Backend Developer</span> 
+                        passionate about building scalable, production-ready systems. 
+                        I specialize in designing REST APIs, implementing microservices 
+                        architecture, and deploying applications on cloud infrastructure.
+                    </p>
+                    <p>
+                        Over the course of building <span class="highlight">6 production-grade projects</span>, 
+                        I've worked with the full backend stack — from database design (MySQL, MongoDB, Redis) 
+                        to cloud deployment (AWS EC2, S3) with CI/CD pipelines using Docker and GitHub Actions.
+                    </p>
+                    <p>
+                        I'm currently looking for opportunities where I can contribute 
+                        to building impactful backend systems and grow as a developer.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-num">6+</span>
+                            <span class="stat-label">Projects Built</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">10+</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">2</span>
+                            <span class="stat-label">Months Learning</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <div class="image-placeholder">
+                            <span>RM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="section-num">02.</span> Skills
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-cat-title">
+                        <span class="cat-icon">🐍</span> Languages
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Bash</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-cat-title">
+                        <span class="cat-icon">⚡</span> Frameworks
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">SQLAlchemy</span>
+                        <span class="tag">Pydantic</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-cat-title">
+                        <span class="cat-icon">🗄️</span> Databases
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="tag">MySQL</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Redis</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-cat-title">
+                        <span class="cat-icon">☁️</span> Cloud & DevOps
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="tag">AWS EC2</span>
+                        <span class="tag">AWS S3</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">docker-compose</span>
+                        <span class="tag">GitHub Actions</span>
+                        <span class="tag">CI/CD</span>
+                        <span class="tag">Render</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-cat-title">
+                        <span class="cat-icon">🔧</span> Tools & Concepts
+                    </h3>
+                    <div class="skill-tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">REST API</span>
+                        <span class="tag">JWT Auth</span>
+                        <span class="tag">Microservices</span>
+                        <span class="tag">Pytest</span>
+                        <span class="tag">Postman</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+<section class="projects" id="projects">
+    <div class="container">
+        <h2 class="section-title">
+            <span class="section-num">03.</span> Projects
+        </h2>
+
+        <div class="projects-grid">
+
+            
+            <div class="project-card featured">
+                <div class="project-header">
+                    <div class="project-icons">
+                        <span class="folder-icon">📁</span>
+                        <div class="project-links">
+                            <a href="https://github.com/yourusername/ministream" 
+                               target="_blank" title="GitHub">
+                                GitHub
+                            </a>
+                            <a href="https://ministream.onrender.com" 
+                               target="_blank" title="Live Demo">
+                                Live
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-badge">⭐ Featured</div>
+                </div>
+                <h3 class="project-title">MiniStream</h3>
+                <p class="project-desc">
+                    Scalable content streaming platform with <strong>microservices architecture</strong>. 
+                    FastAPI main API + Flask notification service. Real-time trending with 
+                    Redis Sorted Set, unique views with HyperLogLog, nested comments in MongoDB. 
+                    5 Docker containers, auto-deploy CI/CD on AWS EC2.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">Redis</span>
+                    <span class="tag">AWS S3</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">EC2</span>
+                </div>
+            </div>
+
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icons">
+                        <span class="folder-icon">📁</span>
+                        <div class="project-links">
+                            <a href="https://github.com/yourusername/resume-screener" target="_blank">GitHub</a>
+                            <a href="https://resume-screener.onrender.com" target="_blank">Live</a>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="project-title">AI Resume Screener</h3>
+                <p class="project-desc">
+                    Intelligent resume screening powered by <strong>OpenAI GPT-3.5</strong>. 
+                    PDF parsing, multi-factor scoring (keyword + experience + AI), 
+                    Redis caching reduces AI API calls by 60%+. 
+                    Background tasks for async processing.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">OpenAI</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">Redis</span>
+                    <span class="tag">AWS S3</span>
+                    <span class="tag">Docker</span>
+                </div>
+            </div>
+
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icons">
+                        <span class="folder-icon">📁</span>
+                        <div class="project-links">
+                            <a href="https://github.com/yourusername/flask-cms" target="_blank">GitHub</a>
+                            <a href="https://flask-cms.onrender.com" target="_blank">Live</a>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="project-title">Flask Advanced CMS</h3>
+                <p class="project-desc">
+                    Multi-vendor blog platform with <strong>RBAC</strong> (Admin/Author/Reader). 
+                    MySQL FULLTEXT search, Redis caching for trending posts, 
+                    AWS S3 media uploads, MongoDB comments, rate limiting.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Flask</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">Redis</span>
+                    <span class="tag">AWS S3</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">RBAC</span>
+                </div>
+            </div>
+
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icons">
+                        <span class="folder-icon">📁</span>
+                        <div class="project-links">
+                            <a href="https://github.com/yourusername/cart-system" target="_blank">GitHub</a>
+                            <a href="https://cart-system.onrender.com" target="_blank">Live</a>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="project-title">E-Commerce Cart System</h3>
+                <p class="project-desc">
+                    E-commerce backend with <strong>dual database</strong> architecture — 
+                    MySQL (users, orders) + MongoDB (products, cart). 
+                    Background tasks for order confirmations, 
+                    inventory check, rate limiting middleware.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">CI/CD</span>
+                </div>
+            </div>
+
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icons">
+                        <span class="folder-icon">📁</span>
+                        <div class="project-links">
+                            <a href="https://github.com/yourusername/notes-app" target="_blank">GitHub</a>
+                            <a href="https://notes-api.onrender.com" target="_blank">Live</a>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="project-title">FastAPI Notes App</h3>
+                <p class="project-desc">
+                    Production-ready Notes API with <strong>FastAPI core concepts</strong> — 
+                    Pydantic validation, Dependency Injection, JWT auth, 
+                    auto-generated Swagger docs, search by title/tags, 
+                    Docker deployment.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">Pydantic</span>
+                    <span class="tag">JWT</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Render</span>
+                </div>
+            </div>
+
+            <!-- Project 6 — Task Manager -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icons">
+                        <span class="folder-icon">📁</span>
+                        <div class="project-links">
+                            <a href="https://github.com/yourusername/task-manager" target="_blank">GitHub</a>
+                            <a href="https://task-manager.onrender.com" target="_blank">Live</a>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="project-title">Task Manager API</h3>
+                <p class="project-desc">
+                    Flask REST API with <strong>JWT authentication</strong>, 
+                    user-specific task isolation, filters, pagination, 
+                    global error handling, pytest tests, 
+                    Docker + GitHub Actions CI/CD pipeline.
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Flask</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">JWT</span>
+                    <span class="tag">pytest</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">GitHub Actions</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="projects-footer">
+            <a href="https://github.com/yourusername" 
+               target="_blank" 
+               class="btn-secondary">
+                View All on GitHub →
+            </a>
+        </div>
+    </div>
+<section class="contact" id="contact">
+    <div class="container">
+        <h2 class="section-title">
+            <span class="section-num">04.</span> Contact
+        </h2>
+
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Let's Work Together</h3>
+                <p>
+                    I'm currently looking for new opportunities. 
+                    Whether you have a question, a project idea, 
+                    or just want to say hi — my inbox is always open!
+                </p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <a href="mailto:ratnesh@example.com">
+                            ratnesh@example.com
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">💼</span>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank">
+                            LinkedIn Profile
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🐙</span>
+                        <a href="https://github.com/yourusername" target="_blank">
+                            GitHub Profile
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>Indore, Madhya Pradesh, India</span>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        placeholder="Your Name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="your@email.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input 
+                        type="text" 
+                        id="subject" 
+                        name="subject" 
+                        placeholder="Job Opportunity / Project / Hello"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        rows="5" 
+                        placeholder="Tell me about the opportunity..."
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submit-btn">
+                    <span class="btn-text">Send Message</span>
+                    <span class="btn-loader" style="display:none;">Sending...</span>
+                </button>
+
+                <div class="form-status" id="form-status"></div>
+            </form>
+        </div>
+    </div>
+</section>
+
+    <footer class="footer">
+        <p>Designed & Built by <span class="highlight">Ratnesh Makwana</span></p>
+        <p class="footer-sub">Built with HTML, CSS, JS | Deployed on Vercel</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
