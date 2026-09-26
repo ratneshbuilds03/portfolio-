@@ -11,7 +11,7 @@ app = FastAPI(title="Portfolio Contact API")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://portfolio-liart-psi-otyvjsiclc.vercel.app/",
+        "https://portfolio-liart-psi-otyvjsiclc.vercel.app",
         "http://localhost",
         "http://127.0.0.1:5500"
         ],
