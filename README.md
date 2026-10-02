@@ -180,8 +180,6 @@ FastAPI • Flask • MySQL • MongoDB • Redis • AWS S3 • JWT • Docker 
 ### Languages
 
 * Python
-* JavaScript
-* TypeScript
 * SQL
 
 ### Backend
