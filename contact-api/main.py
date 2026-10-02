@@ -143,7 +143,9 @@ async def chat(data: ChatMessage):
             "reply": response.content[0].text
         }
 
+    
     except Exception as e:
-        return {
-            "reply": "Sorry, I'm having trouble responding right now. Please try again or contact Ratnesh directly at ratnesh@example.com"
-        }
+        print("ANTHROPIC ERROR:", repr(e))
+    return {
+        "reply": "Anthropic API error. Check terminal."
+    }
