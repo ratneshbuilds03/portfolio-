@@ -117,25 +117,24 @@ form.addEventListener("submit", async (e) => {
   submitBtn.querySelector(".btn-loader").style.display = "inline";
 
   try {
-    const response = await fetch(
-      "https://portfolio-3li6.onrender.com/contact",
+    await emailjs.send(
+      "service_gfidmw4",
+      "template_61j2gej",
       {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, subject, message }),
-      },
+        name: name,
+        email: email,
+        subject: subject,
+        message: message,
+      }
     );
 
-    if (response.ok) {
-      showStatus("✅ Message sent! I'll get back to you soon.", "success");
-      form.reset();
-    } else {
-      showStatus("❌ Something went wrong. Try emailing directly.", "error");
-    }
+    showStatus("✅ Message sent! I'll get back to you soon.", "success");
+    form.reset();
+
   } catch (error) {
-    showStatus(
-      `📧 API unavailable. Email me directly: ratneshmakana51@gmail.com`,
-    );
+    console.error("EmailJS Error:", error);
+    showStatus("❌ Message could not be sent. Please try again.", "error");
+
   } finally {
     submitBtn.disabled = false;
     submitBtn.querySelector(".btn-text").style.display = "inline";
@@ -155,7 +154,7 @@ const chatIcon = document.querySelector(".chat-icon");
 const chatCloseIcon = document.querySelector(".chat-close-icon");
 
 
-const CHAT_API_URL = "https://your-contact-api.onrender.com/chat";
+const CHAT_API_URL = "https://portfolio-3li6.onrender.com/chat";
 
 let isChatOpen = false;
 
