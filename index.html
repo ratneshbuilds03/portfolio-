@@ -497,7 +497,75 @@
         <p>Designed & Built by <span class="highlight">Ratnesh Makwana</span></p>
         <p class="footer-sub">Built with HTML, CSS, JS | Deployed on Vercel</p>
     </footer>
+        
+<div class="chatbot-container" id="chatbot-container">
 
+
+    <div class="chat-window" id="chat-window">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">🤖</div>
+                <div>
+                    <div class="chat-name">Ratnesh's Assistant</div>
+                    <div class="chat-status">
+                        <span class="status-dot"></span> Online
+                    </div>
+                </div>
+            </div>
+            <button class="chat-close" id="chat-close">✕</button>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+            <!-- Welcome message -->
+            <div class="message bot-message">
+                <div class="message-bubble">
+                    👋 Hi! I'm Ratnesh's portfolio assistant. 
+                    Ask me anything about his skills, 
+                    projects, or background!
+                </div>
+                <div class="message-time">Just now</div>
+            </div>
+
+        
+            <div class="quick-questions">
+                <p class="quick-label">Quick Questions:</p>
+                <button class="quick-btn" onclick="askQuick('What are your top skills?')">
+                    🔧 Top Skills
+                </button>
+                <button class="quick-btn" onclick="askQuick('Tell me about MiniStream project')">
+                    🚀 MiniStream
+                </button>
+                <button class="quick-btn" onclick="askQuick('What technologies do you use?')">
+                    💻 Tech Stack
+                </button>
+                <button class="quick-btn" onclick="askQuick('Are you available for hire?')">
+                    💼 Hire?
+                </button>
+            </div>
+        </div>
+
+        <div class="chat-input-area">
+            <input 
+                type="text" 
+                id="chat-input" 
+                class="chat-input"
+                placeholder="Ask about my skills, projects..."
+                maxlength="500"
+            >
+            <button class="chat-send" id="chat-send">
+                ➤
+            </button>
+        </div>
+    </div>
+
+
+    <button class="chat-toggle" id="chat-toggle">
+        <span class="chat-icon">💬</span>
+        <span class="chat-close-icon" style="display:none;">✕</span>
+        <span class="chat-notification" id="chat-notification">1</span>
+    </button>
+
+</div>
     <script src="js/main.js"></script>
 </body>
 </html>

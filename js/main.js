@@ -134,8 +134,7 @@ form.addEventListener("submit", async (e) => {
     }
   } catch (error) {
     showStatus(
-      `📧 API unavailable. Email me directly: ratnesh@example.com`,
-      "error",
+      `📧 API unavailable. Email me directly: ratneshmakana51@gmail.com`,
     );
   } finally {
     submitBtn.disabled = false;
@@ -144,6 +143,148 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
+
+const chatToggle = document.getElementById("chat-toggle");
+const chatWindow = document.getElementById("chat-window");
+const chatClose = document.getElementById("chat-close");
+const chatMessages = document.getElementById("chat-messages");
+const chatInput = document.getElementById("chat-input");
+const chatSend = document.getElementById("chat-send");
+const chatNotification = document.getElementById("chat-notification");
+const chatIcon = document.querySelector(".chat-icon");
+const chatCloseIcon = document.querySelector(".chat-close-icon");
+
+
+const CHAT_API_URL = "https://your-contact-api.onrender.com/chat";
+
+let isChatOpen = false;
+
+
+chatToggle.addEventListener("click", () => {
+    isChatOpen = !isChatOpen;
+
+    if (isChatOpen) {
+        chatWindow.classList.add("open");
+        chatIcon.style.display = "none";
+        chatCloseIcon.style.display = "inline";
+        chatNotification.style.display = "none";
+        chatInput.focus();
+    } else {
+        chatWindow.classList.remove("open");
+        chatIcon.style.display = "inline";
+        chatCloseIcon.style.display = "none";
+    }
+});
+
+chatClose.addEventListener("click", () => {
+    isChatOpen = false;
+    chatWindow.classList.remove("open");
+    chatIcon.style.display = "inline";
+    chatCloseIcon.style.display = "none";
+});
+
+
+chatSend.addEventListener("click", sendMessage);
+
+
+chatInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+    }
+});
+
+function askQuick(question) {
+    chatInput.value = question;
+    sendMessage();
+}
+
+
+function getTime() {
+    return new Date().toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+}
+
+function addMessage(text, type) {
+    const messageDiv = document.createElement("div");
+    messageDiv.className = `message ${type}-message`;
+
+    messageDiv.innerHTML = `
+        <div class="message-bubble">${text}</div>
+        <div class="message-time">${getTime()}</div>
+    `;
+
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return messageDiv;
+}
+
+function showTyping() {
+    const typingDiv = document.createElement("div");
+    typingDiv.className = "message bot-message typing-indicator";
+    typingDiv.id = "typing-indicator";
+    typingDiv.innerHTML = `
+        <div class="message-bubble">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        </div>
+    `;
+    chatMessages.appendChild(typingDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function removeTyping() {
+    const typing = document.getElementById("typing-indicator");
+    if (typing) typing.remove();
+}
+
+
+async function sendMessage() {
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    
+    chatInput.value = "";
+    chatSend.disabled = true;
+    chatInput.disabled = true;
+
+    
+    const quickQ = document.querySelector(".quick-questions");
+    if (quickQ) quickQ.remove();
+
+    
+    addMessage(message, "user");
+
+    
+    showTyping();
+
+    try {
+        const response = await fetch(CHAT_API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: message })
+        });
+
+        const data = await response.json();
+
+        removeTyping();
+        addMessage(data.reply, "bot");
+
+    } catch (error) {
+        removeTyping();
+        addMessage(
+            "Sorry, I'm offline right now. Contact Ratnesh directly at <a href='mailto:ratnesh@example.com' style='color:var(--accent)'>ratnesh@example.com</a>",
+            "bot"
+        );
+    } finally {
+        chatSend.disabled = false;
+        chatInput.disabled = false;
+        chatInput.focus();
+    }
+}
 function showStatus(msg, type) {
   formStatus.textContent = msg;
   formStatus.className = `form-status ${type}`;
