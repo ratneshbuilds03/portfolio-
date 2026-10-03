@@ -241,6 +241,28 @@ function removeTyping() {
 }
 
 
+function renderQuickQuestions() {
+    const existing = document.querySelector(".quick-questions");
+    if (existing) existing.remove();
+
+    const quick = document.createElement("div");
+    quick.className = "quick-questions";
+    quick.innerHTML = `
+        <p class="quick-label">Quick Questions:</p>
+        <button class="quick-btn" type="button" data-question="What are your top skills?">🔧 Top Skills</button>
+        <button class="quick-btn" type="button" data-question="Tell me about MiniStream project">🚀 MiniStream</button>
+        <button class="quick-btn" type="button" data-question="What technologies do you use?">💻 Tech Stack</button>
+        <button class="quick-btn" type="button" data-question="Are you available for hire?">💼 Hire?</button>
+    `;
+
+    quick.querySelectorAll(".quick-btn").forEach((button) => {
+        button.addEventListener("click", () => askQuick(button.dataset.question));
+    });
+
+    chatMessages.appendChild(quick);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
 async function sendMessage() {
     const message = chatInput.value.trim();
     if (!message) return;
@@ -267,17 +289,25 @@ async function sendMessage() {
             body: JSON.stringify({ message: message })
         });
 
-        const data = await response.json();
+        const data = await response.json().catch(() => ({}));
 
         removeTyping();
-        addMessage(data.reply, "bot");
+
+        if (!response.ok) {
+            throw new Error(data.detail || data.reply || `Chat request failed (${response.status})`);
+        }
+
+        addMessage(data.reply || "I couldn't generate a response right now. Please try again.", "bot");
+        renderQuickQuestions();
 
     } catch (error) {
+        console.error("Chat API Error:", error);
         removeTyping();
         addMessage(
-            "Sorry, I'm offline right now. Contact Ratnesh directly at <a href='mailto:ratnesh@example.com' style='color:var(--accent)'>ratnesh@example.com</a>",
+            "Sorry, the assistant is temporarily unavailable. You can contact Ratnesh at <a href='mailto:ratneshmakwana51@gmail.com' style='color:var(--accent)'>ratneshmakwana51@gmail.com</a>.",
             "bot"
         );
+        renderQuickQuestions();
     } finally {
         chatSend.disabled = false;
         chatInput.disabled = false;

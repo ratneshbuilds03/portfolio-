@@ -1093,3 +1093,63 @@ body {
         height: 450px;
     }
 }
+
+/* Added portfolio sections */
+.experience-card,
+.education-card,
+.cert-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border, rgba(255,255,255,0.1));
+    border-radius: 14px;
+    padding: 24px;
+    margin-top: 20px;
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.experience-header h3,
+.education-card h3 {
+    margin: 0 0 6px;
+}
+
+.experience-header p,
+.education-card p,
+.experience-card > p {
+    margin: 6px 0;
+}
+
+.experience-header > span {
+    white-space: nowrap;
+    opacity: 0.75;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.cert-card {
+    margin-top: 0;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-header {
+        flex-direction: column;
+        gap: 4px;
+    }
+}

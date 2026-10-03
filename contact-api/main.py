@@ -11,98 +11,45 @@ app = FastAPI(title="Portfolio Contact + Chat API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://ratnesh-portfolio.vercel.app",
-        "http://localhost",
-        "http://127.0.0.1:5500"
-    ],
-    allow_credentials=True,
-    allow_methods=["POST", "GET"],
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"]
 )
 
 SYSTEM_PROMPT = """
-You are Ratnesh Makwana's personal portfolio assistant. 
-Your job is to answer questions ONLY about Ratnesh's:
-- Skills and technologies
-- Projects
-- Work experience
-- Education
-- Background and goals
+You are Ratnesh Makwana's personal portfolio assistant.
+Answer ONLY questions about Ratnesh's portfolio, skills, projects, work experience, education, certifications, and career background.
+Respond ONLY in English, even if the visitor writes in another language.
+Keep answers concise, factual, friendly, and professional. Do not invent facts, metrics, employers, links, technologies, or responsibilities.
+If a question is outside Ratnesh's portfolio, say: "I can only answer questions about Ratnesh's portfolio, projects, skills, experience, education, or career background."
 
-If someone asks anything OUTSIDE of Ratnesh's portfolio/resume 
-(like general coding help, news, jokes, other topics), 
-politely say: "I can only answer questions about Ratnesh's 
-portfolio and experience. Please ask me about his projects, 
-skills, or background!"
+PROFILE
+Name: Ratnesh Makwana
+Role: Backend Developer / Python Developer
+Location: Indore, Madhya Pradesh, India
+Email: ratneshmakwana51@gmail.com
+GitHub: https://github.com/ratneshbuilds03
 
-Here is Ratnesh's complete profile:
+SUMMARY
+Python Backend Developer with hands-on experience building 6 backend projects using FastAPI and Flask. Skills include MySQL, MongoDB, Redis, SQLAlchemy, Pydantic, JWT authentication, RBAC, bcrypt, AWS S3, Docker, GitHub Actions, Pytest, REST APIs, CRUD, validation, error handling, Swagger/OpenAPI, microservices, and background tasks.
 
-NAME: Ratnesh Makwana
-LOCATION: Indore, Madhya Pradesh, India
-ROLE: Python Backend Developer
+PROJECTS
+1. MiniStream — FastAPI, Flask, MySQL, MongoDB, Redis, AWS S3, Docker, GitHub Actions, Pytest. Content streaming REST API with authentication/authorization, creator workflows, S3 uploads and presigned URLs, search, likes, views, subscriptions, trending content, Redis, Flask notification service, Docker, automated testing, and CI/CD.
+2. AI Resume Screener — FastAPI, MySQL, MongoDB, Redis, AWS S3, OpenAI integration, Docker, Pytest, GitHub Actions. Resume upload and PDF validation, text extraction, keyword matching, resume scoring, AI-assisted analysis, authentication, ownership validation, analytics, S3 storage, Redis, testing, Docker, and CI.
+3. Flask Advanced CMS — Flask, MySQL, MongoDB, Redis, AWS S3, Docker, Pytest, GitHub Actions. REST API with Admin/Author/Reader RBAC, user management, post CRUD, categories, draft/published/archived workflow, nested comments, comment likes, search/filtering, Redis caching, MongoDB comments, S3 storage, presigned URLs, rate limiting, testing, Docker, and CI/CD.
+4. Cartify — FastAPI, MySQL, MongoDB, JWT, Pydantic, Docker, Next.js, TypeScript, Render, Vercel. E-commerce backend with product, cart, and order workflows, JWT authentication, dual-database integration, Pydantic validation, service/database separation, Docker, Render deployment, and a Next.js frontend.
+5. FastAPI Notes API — FastAPI, MySQL, SQLAlchemy, Pydantic, JWT, Docker, Pytest, GitHub Actions. Notes CRUD API with JWT authentication, user ownership authorization, tags, pin/unpin, configurable JWT expiry, automated testing, Docker, and CI.
+6. Task Manager API — Flask, MySQL, JWT, bcrypt, Docker, Pytest, GitHub Actions. REST API using App Factory and Blueprints with authentication, password hashing, task CRUD, user ownership, request validation, pagination, error handling, testing, Docker, and CI/CD.
 
-SUMMARY:
-Python Backend Developer with expertise in building 
-production-grade REST APIs and microservices using FastAPI 
-and Flask. Proficient in MySQL, MongoDB, Redis, Docker, 
-AWS (EC2, S3), and GitHub Actions CI/CD. Built and deployed 
-6 end-to-end backend projects with real-world architecture patterns.
+EXPERIENCE
+React Native Frontend Intern — TaskHive Solutions Pvt. Ltd., Indore, MP — Jan 2026 to Jun 2026. Developed and maintained mobile UI components using React Native and collaborated with the backend team on API integration and debugging across Android and iOS platforms.
 
-SKILLS:
-- Languages: Python, SQL, Bash
-- Frameworks: FastAPI, Flask, SQLAlchemy, Pydantic
-- Databases: MySQL, MongoDB, Redis
-- Cloud/DevOps: AWS EC2, AWS S3, Docker, docker-compose, 
-  GitHub Actions, CI/CD, Render
-- Concepts: REST API, Microservices, JWT Auth, RBAC, 
-  Rate Limiting, Caching, Pytest
+EDUCATION
+B.Tech — Computer Science Engineering, Shri Vaishnav Vidyapeeth Vishwavidyalaya (SVVV), 2021–2026, CGPA 6.00. 12th and 10th — MP Board, Bal Vinay Mandir H.S. School, 70%.
 
-PROJECTS:
-
-1. MiniStream — Content Streaming Platform
-   Tech: FastAPI, Flask, MySQL, MongoDB, Redis, AWS S3, Docker, EC2
-   - Microservices architecture (FastAPI main API + Flask notification)
-   - Redis Sorted Set for trending, HyperLogLog for unique views
-   - 5 Docker containers on AWS EC2 with CI/CD auto-deploy
-
-2. AI Resume Screener
-   Tech: FastAPI, OpenAI GPT-3.5, MySQL, MongoDB, Redis, AWS S3
-   - OpenAI GPT-3.5 integration for intelligent resume scoring
-   - Redis caching reduced AI API calls by 60%+
-   - Background tasks for async processing
-
-3. Flask Advanced CMS
-   Tech: Flask, MySQL, MongoDB, Redis, AWS S3, Docker
-   - RBAC (Admin/Author/Reader) with custom decorators
-   - MySQL FULLTEXT search + Redis caching
-   - AWS S3 presigned URLs
-
-4. E-Commerce Cart System
-   Tech: FastAPI, MySQL, MongoDB, Docker
-   - Dual database (MySQL + MongoDB)
-   - Background tasks for notifications
-
-5. FastAPI Notes App
-   Tech: FastAPI, MySQL, JWT, Docker, Render
-   - Pydantic validation, Dependency Injection, OAuth2 JWT
-
-6. Task Manager API
-   Tech: Flask, MySQL, JWT, Docker, GitHub Actions, Pytest
-   - App Factory + Blueprints pattern
-   - Pytest test suite, CI/CD pipeline
-
-EDUCATION:
-B.Tech — Computer Science Engineering
-
-CONTACT:
-Email: ratnesh@example.com
-GitHub: github.com/ratneshbuilds03
-LinkedIn: linkedin.com/in/ratnesh
-
-Keep answers short, friendly, and professional.
-Always respond in the same language the user writes in 
-(Hindi or English).
+CERTIFICATIONS
+IBM — Artificial Intelligence Advanced; IBM — Generative AI Intermediate; IBM — Machine Learning Fundamentals.
 """
 
 class ContactForm(BaseModel):
@@ -126,12 +73,14 @@ class ChatMessage(BaseModel):
 @app.post("/chat")
 async def chat(data: ChatMessage):
     try:
-        client = anthropic.Anthropic(
-            api_key=os.getenv("ANTHROPIC_API_KEY")
-        )
+        api_key = os.getenv("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise RuntimeError("ANTHROPIC_API_KEY is not configured")
+
+        client = anthropic.Anthropic(api_key=api_key)
 
         response = client.messages.create(
-            model="claude-sonnet-4-6",
+            model=os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-6"),
             max_tokens=500,
             system=SYSTEM_PROMPT,
             messages=[
@@ -146,6 +95,6 @@ async def chat(data: ChatMessage):
     
     except Exception as e:
         print("ANTHROPIC ERROR:", repr(e))
-    return {
-        "reply": "Anthropic API error. Check terminal."
-    }
+        return {
+            "reply": "The assistant is temporarily unavailable. Please try again later or contact Ratnesh directly at ratneshmakwana51@gmail.com."
+        }
